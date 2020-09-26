@@ -1,2 +1,4 @@
 ---
 # handlers file for config_load_balancer
+- name: reload nginx
+  service: name=nginx state=reloaded

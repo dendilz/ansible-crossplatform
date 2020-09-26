@@ -4,21 +4,19 @@
   copy:
     src: static-site
     dest: /etc/nginx/sites-available/static-site
-  become: yes
 
-- name: create symlink rebrain site
+- name: create symlink site
   file:
     src: /etc/nginx/sites-available/static-site
     dest: /etc/nginx/sites-enabled/static-site
     state: link
-  become: yes
 
-- name: create a directory for rebrain site
+- name: create a directory for site
   file:
     path: /var/www/site
     state: directory
 
-- name: copy the content of the rebrain site
+- name: copy the content of the site
   template:
     src: index.html.j2
     dest: /var/www/site/index.html
@@ -33,9 +31,4 @@
     path: /var/www
     mode: '0755'
     recurse: yes
-
-- name: restart nginx
-  service:
-    name: nginx
-    state: restarted
-  become: yes
+  notify: reload nginx

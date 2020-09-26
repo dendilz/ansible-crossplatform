@@ -57,4 +57,7 @@ resource "null_resource" "install_nginx" {
   provisioner "local-exec" {
     command = "ansible-playbook -i ./inventory ./install_nginx.yml"
   }
+  depends_on = [
+    aws_route53_record.s53_record
+  ]
 }
