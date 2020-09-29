@@ -6,3 +6,11 @@
 - name: ensure nginx is at the latest version for ubuntu systems
   apt:
     name: nginx
+
+- name: copy nginx config for Ubuntu
+  vars:
+    user: www-data
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  when: ansible_distribution == "Ubuntu"

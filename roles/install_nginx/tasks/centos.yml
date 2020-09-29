@@ -10,3 +10,10 @@
 - name: ensure nginx is at the latest version for centos systems
   yum:
     name: nginx
+
+- name: copy the nginx config file
+  template:
+    src: nginx-centos.conf.j2
+    dest: /etc/nginx/nginx.conf
+  when: ansible_distribution == "CentOS"
+  become: yes
