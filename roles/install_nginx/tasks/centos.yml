@@ -11,7 +11,7 @@
   yum:
     name: nginx
 
-- name: copy the nginx config file
+- name: copy the nginx config for CentOS
   template:
     src: nginx-centos.conf.j2
     dest: /etc/nginx/nginx.conf
