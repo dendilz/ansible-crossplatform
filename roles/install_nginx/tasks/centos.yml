@@ -12,7 +12,8 @@
     name: nginx
 
 - name: copy the nginx config for CentOS
+  vars:
+    user: nginx
   template:
-    src: nginx-centos.conf.j2
+    src: nginx.conf.j2
     dest: /etc/nginx/nginx.conf
-  when: ansible_distribution == "CentOS"
